@@ -1,32 +1,31 @@
 import { nanoid } from 'nanoid'
-import { useState } from 'react';
+import { useForm } from "react-hook-form";
 
 const Create = (props) => {
 
     const todos = props.todo;
     const settodos = props.settodo;
 
-    const [title, settitle] = useState("");
+    const { register, handleSubmit, reset, formState: { errors } } = useForm();
 
-    const submitHandler = (e) => {
-        e.preventDefault();
-        const newTodo = {
-            id: nanoid(),
-            title: title,
-            isCompleted: false,
+    const submitHandler = (data) => {
+        data.id = nanoid()
+        data.isCompleted = false
 
-        }
-        settodos([...todos, newTodo])
-        settitle("")
+        settodos([...todos, data])
+        reset()
     }
+
+    console.log(errors)
 
     return (
         <>
             <div className="register-task">
                 <h1>Create Task</h1>
 
-                <form onSubmit={submitHandler}>
-                    <input type="text" value={title} placeholder='' onChange={(e) => {settitle(e.target.value)}} />
+                <form onSubmit={handleSubmit(submitHandler)}>
+                    <input type="text" {...register("title", { required: "This field is required" })} name='title' placeholder='title' />
+                    <small>{errors?.title?.message}</small>
                     <button>Create Task</button>
                 </form>
             </div>
