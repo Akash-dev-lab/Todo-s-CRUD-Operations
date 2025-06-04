@@ -1,5 +1,6 @@
 import { nanoid } from 'nanoid'
 import { useForm } from "react-hook-form";
+import { toast } from 'react-toastify';
 
 const Create = (props) => {
 
@@ -13,10 +14,9 @@ const Create = (props) => {
         data.isCompleted = false
 
         settodos([...todos, data])
+        toast.success("Task Created !")
         reset()
     }
-
-    console.log(errors)
 
     return (
         <>

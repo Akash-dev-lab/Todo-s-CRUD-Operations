@@ -1,3 +1,5 @@
+import { toast } from "react-toastify";
+
 const RenderTask = (props) => {
 
     const todo = props.todo;
@@ -8,6 +10,7 @@ const RenderTask = (props) => {
     const DeleteHandler = (id) => {
         const filterTodo = todo.filter((todo) => todo.id !== id)
         settodo(filterTodo)
+        toast.error("Task Deleted !")
     }
 
     const renderTask = todo.map(task => {
