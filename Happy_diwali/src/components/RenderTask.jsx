@@ -1,9 +1,10 @@
+import { useContext } from "react";
 import { toast } from "react-toastify";
+import { todoContext } from "../Wrapper";
 
-const RenderTask = (props) => {
+const RenderTask = () => {
 
-    const todo = props.todo;
-    const settodo = props.settodo;
+    const [todo, settodo] = useContext(todoContext)
 
     //Delete Functionality
 
