@@ -4,8 +4,6 @@ const ReceipeCard = (props) => {
 
     const { id, title, image, chef, des } = props.reciepe
 
-    console.log(des)
-
     return (
         <Link to={`/receipes/detail/${id}`} className='block duration-150 hover:scale-101 mr-3 mb-3 w-[23vw] rounded overflow-hidden shadow'>
             <img className='object-cover w-full h-[20vh]' src={image} alt="" />

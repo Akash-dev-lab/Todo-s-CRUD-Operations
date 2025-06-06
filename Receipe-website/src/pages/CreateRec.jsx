@@ -13,7 +13,10 @@ const CreateRec = () => {
 
     const submitHandler = (reciepe) => {
         reciepe.id = nanoid()
-        setdata([...data, reciepe])
+        const copyData = [...data]
+        copyData.push(reciepe)
+        setdata(copyData)
+        localStorage.setItem("reciepes", JSON.stringify(copyData))
         toast.success("New Reciepe Created !")
         navigate("/receipes")
         reset()
